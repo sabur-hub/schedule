@@ -1,0 +1,16 @@
+{
+    "name": "Ҷадвали дарсии 40010202",
+    "short_name": "40010202",
+    "icons": [
+      {
+        "src": "why2.png",
+        "sizes": "192x192",
+        "type": "image/png"
+      }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#ffffff",
+    "theme_color": "#6D97FC"
+  }
+  

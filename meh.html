@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ҷадвали 40010202</title>
+    <link rel="manifest" href="manifest.json">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+        }
+        .table {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .block {
+            width: calc(33.33% - 20px);
+            background-color: #fff;
+            border-radius: 20px;
+            margin: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        @media screen and (max-width: 768px) {
+            .block {
+                width: calc(50% - 20px);
+            }
+        }
+        @media screen and (max-width: 480px) {
+            .block {
+                width: 100%;
+            }
+        }
+        .rest-day {
+            font-weight: bold;
+            font-size: 30px;
+            color: green;
+        }
+
+        /* Стили для тёмного режима */
+        .dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+/* Стили для модального окна */
+.modal {
+    display: none; /* Скрываем модальное окно по умолчанию */
+    position: fixed; /* Фиксированная позиция */
+    z-index: 1; /* Выше других элементов */
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: transparent;
+    backdrop-filter: blur(2.5rem);
+}
+
+/* Задний фон модального окна с размытием */
+.modal-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent; /* Прозрачный черный цвет */
+    backdrop-filter: blur(1px); /* Размытие заднего фона */
+}
+
+/* Стили для содержимого модального окна */
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto; /* По вертикали и горизонтали выровняем по центру */
+    padding: 20px;
+    font-size: 20px;
+    border: 1px solid #838383;
+    width: calc(33.33% - 20px); /* Ширина, с учетом отступов */
+    background-color: transparent;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Тень */
+    color: #000; /* Цвет текста в светлом режиме */
+    filter: blur(0); /* Убираем размытие для содержимого модального окна */
+}
+
+/* Размер модального окна на мобильных устройствах */
+@media screen and (max-width: 480px) {
+    .modal-content {
+        width: 90%; /* Уменьшаем ширину на мобильных устройствах */
+    }
+}
+
+/* Стили для текста в темном режиме */
+.dark-mode .modal-background {
+    background-color: rgba(0, 0, 0, 0.9); /* Прозрачный черный цвет для темного режима */
+}
+
+.dark-mode .modal-content {
+    color: #fff; /* Цвет текста в темном режиме */
+}
+
+        /* Кнопка закрытия модального окна */
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+                /* Стили для кнопок */
+        button {
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 20px;
+            margin-right: 10px;
+            }
+
+        /* Стили для блоков в светлом режиме */
+        .light-mode .block {
+            background-color: #fff; /* Цвет фона для блоков в светлом режиме */
+            color: #000; /* Цвет текста для блоков в светлом режиме */
+        }
+
+        /* Стили для блоков в тёмном режиме */
+        .dark-mode .block {
+            background-color: #444; /* Цвет фона для блоков в тёмном режиме */
+            color: #fff; /* Цвет текста для блоков в тёмном режиме */
+        }
+
+        /* Общие стили для темы */
+        .dark-mode {
+            background-color: #333;
+            color: #fff; /* Цвет текста для основного контента в тёмном режиме */
+        }
+
+        /* Стили для текста */
+        body, button, .block, h1 {
+            font-family: Arial, sans-serif;
+            color: inherit; /* Наследование цвета текста */
+        }
+
+        /* Стили для кнопок */
+        button {
+            color: #fff; /* Цвет текста для кнопок */
+            background-color: #6D97FC; /* Цвет фона для кнопок */
+        }
+
+        /* Стили для переключателя темы */
+        .toggle.dark-mode {
+            background-color: #999; /* Цвет фона для кнопки темного режима в тёмном режиме */
+        }
+        .toggle.dark-mode::before {
+            content: "Светлый режим"; /* Текст для кнопки темного режима в тёмном режиме */
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+<!-- HTML -->
+    <button id="darkModeToggle">Ҳолати торик</button>
+        <button id="authorInfoButton">Муаллиф</button>
+        <h1>Ҷадвали дарсии гурӯҳи 40010202</h1>
+        <div id="restDayMessage" class="rest-day" style="display:none;">Отдых</div>
+        <div class="table">
+            <div class="block">
+                <h2>Душанбе</h2>
+                <p>1 - Иқтисоди миллӣ</p>
+                <p>2 - Иқтисоди миллӣ</p>
+                <p>3 - Тиҷорати электронӣ</p>
+                <p>4 - Тиҷорати электронӣ</p>
+                <p>5 - Этика</p>
+                <p>6 - Тиҷорати электронӣ</p>
+            </div>
+            <div class="block">
+                <h2>Сешанбе</h2>
+                <p>Ҳарбӣ</p>
+                <p>Тиббӣ</p>
+            </div>
+            <div class="block">
+                <h2>Чоршанбе</h2>
+                <p>1 - Сиёсатшиносӣ</p>
+                <p>2 - Сиёсатшиносӣ</p>
+                <p>3 - Тиҷорати электронӣ</p>
+                <p>4 - Иқтисоди меҳнат</p>
+                <p>5 - Иқтисоди меҳнат</p>
+
+            </div>
+            <div class="block">
+                <h2>Панҷшанбе</h2>
+                <p>1 - Иқтисоди меҳнат</p>
+                <p>2 - Иқтисоди меҳнат</p>
+                <p>3 - Сиёсатшиносӣ</p>
+                <p>4 - Иқтисоди миллӣ</p>
+                <p>5 - Асосҳои бизнес</p>
+
+
+            </div>
+            <div class="block">
+                <h2>Ҷумъа</h2>
+                <p>1 - Технология офисӣ</p>
+                <p>2 - Технология офисӣ</p>
+                <p>3 - Этика</p>
+                <p>4 - Этика</p>
+                <p>5 - Технология офисӣ</p>
+
+            </div>
+            <div class="block">
+                <h2>Шанбе</h2>
+                <p>1 - Асосҳои бизнес</p>
+                <p>2 - Асосҳои бизнес</p>
+                <p>3 - Омор</p>
+                <p>4 - Омор</p>
+                <p>5 - Омор</p>
+                <p>6 - Иқтисоди меҳнат</p>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно об авторе -->
+    <div id="authorInfoModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Падари ин сайт <br> Абдусабур мебошад</p>
+            <p>&copy; 2024.  <br>Ҳама ҳуқуқҳо <a href="https://github.com/sabur-hub/schedule/blob/main/LICENSE">ҳифз</a> шудаанд.</p>
+        </div>
+    </div>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            var blocks = document.querySelectorAll('.block');
+            var restDayMessage = document.getElementById('restDayMessage');
+            var currentDate = new Date();
+            var currentDay = currentDate.getDay(); // 0 - Воскресенье, 1 - Понедельник, ..., 6 - Суббота
+
+            // Цвета для каждого дня недели
+            var colors = ['#FC926D', '#FCCE6D', '#8A6DFC', '#74FC6D', '#6D97FC', '#6DFCFA', '#ffffff']; // Белый цвет для воскресенья
+
+            // В зависимости от текущего дня недели применяем стиль к соответствующему блоку
+            if (currentDay === 0) {
+                restDayMessage.style.display = 'block';
+            } else {
+                blocks[currentDay - 1].style.backgroundColor = colors[currentDay - 1]; // Устанавливаем цвет для текущего дня
+            }
+
+            // Обработчики событий для кнопок и модального окна
+            var darkModeToggle = document.getElementById('darkModeToggle');
+            var authorInfoButton = document.getElementById('authorInfoButton');
+            var authorInfoModal = document.getElementById('authorInfoModal');
+            var closeButton = document.getElementsByClassName('close')[0];
+
+            // Обработчик клика для кнопки переключения в тёмный режим
+            darkModeToggle.addEventListener('click', function () {
+                document.body.classList.toggle('dark-mode');
+                updateDarkModeButtonText(); // Обновляем текст кнопки при переключении режима
+            });
+
+            // Обработчик клика для кнопки об авторе
+            authorInfoButton.addEventListener('click', function () {
+                authorInfoModal.style.display = 'block';
+            });
+
+            // Обработчик клика для кнопки закрытия модального окна
+            closeButton.addEventListener('click', function () {
+                authorInfoModal.style.display = 'none';
+            });
+
+            // Закрытие модального окна при клике за его пределами
+            window.addEventListener('click', function (event) {
+                if (event.target == authorInfoModal) {
+                    authorInfoModal.style.display = 'none';
+                }
+            });
+
+            // Устанавливаем начальный текст кнопки
+            function updateDarkModeButtonText() {
+                var isDarkMode = document.body.classList.contains('dark-mode');
+                darkModeToggle.textContent = isDarkMode ? 'Ҳолати рӯшан' : 'Ҳолати торик';
+            }
+        });
+        // service-worker.js
+
+        self.addEventListener('install', function(event) {
+        event.waitUntil(
+            caches.open('cache').then(function(cache) {
+            return cache.addAll([
+                '/',
+                '/meh.html',
+            ]);
+            })
+        );
+        });
+
+        self.addEventListener('fetch', function(event) {
+        event.respondWith(
+            caches.match(event.request).then(function(response) {
+            return response || fetch(event.request);
+            })
+        );
+        });
+
+    </script>
+</body>
+</html>
