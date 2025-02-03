@@ -1,3 +1,114 @@
+/* Основные стили */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+.table {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.block {
+    width: calc(33.33% - 20px);
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.lesson-group {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8); /* Полупрозрачный белый фон */
+}
+
+.lesson {
+    margin: 5px 0;
+    font-size: 1em;
+    color: #333;
+}
+
+.teacher {
+    font-size: 0.9em;
+    color: #666;
+    font-style: italic;
+    margin-top: 10px;
+}
+
+/* Цвета для блоков */
+.block-1 {
+    background: linear-gradient(135deg, #FC926D, #FF6B6B);
+}
+
+.block-2 {
+    background: linear-gradient(135deg, #FCCE6D, #FFD166);
+}
+
+.block-3 {
+    background: linear-gradient(135deg, #8A6DFC, #6D5DFC);
+}
+
+.block-4 {
+    background: linear-gradient(135deg, #74FC6D, #4CAF50);
+}
+
+.block-5 {
+    background: linear-gradient(135deg, #6D97FC, #3F51B5);
+}
+
+.block-6 {
+    background: linear-gradient(135deg, #6DFCFA, #00BCD4);
+}
+
+/* Тёмный режим */
+.dark-mode .block {
+    background-color: #444;
+    color: #fff;
+}
+
+.dark-mode .lesson-group {
+    background-color: rgba(0, 0, 0, 0.2); /* Полупрозрачный тёмный фон */
+}
+
+.dark-mode .lesson {
+    color: #fff;
+}
+
+.dark-mode .teacher {
+    color: #ccc;
+}
+
+/* Адаптивность */
+@media screen and (max-width: 768px) {
+    .block {
+        width: calc(50% - 20px);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .block {
+        width: 100%;
+    }
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -162,5 +273,15 @@ button {
 }
 .toggle.dark-mode::before {
     content: "Светлый режим"; /* Текст для кнопки темного режима в тёмном режиме */
+}
+
+.teacher {
+    font-size: 0.9em;
+    color: #666;
+    font-style: italic;
+}
+
+.dark-mode .teacher {
+    color: #ccc; /* Цвет для тёмного режима */
 }
 
